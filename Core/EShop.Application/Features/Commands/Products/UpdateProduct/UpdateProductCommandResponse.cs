@@ -1,4 +1,4 @@
-﻿namespace EShop.Application.Features.Commands.UpdateProduct
+﻿namespace EShop.Application.Features.Commands.Products.UpdateProduct
 {
     public class UpdateProductCommandResponse
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EShop.Application.Features.Commands.UpdateProduct
+namespace EShop.Application.Features.Commands.Products.UpdateProduct
 {
     public class UpdateProductCommandRequest : IRequest<UpdateProductCommandResponse>
     {

@@ -13,6 +13,8 @@ using EShop.Application.Repositories.CustomerRepository;
 using EShop.Persistence.Repositories.CustomerRepository;
 using EShop.Application.Repositories.OrderRepository;
 using EShop.Persistence.Repositories.OrderRepository;
+using EShop.Application.Repositories;
+using EShop.Persistence.Repositories;
 
 namespace EShop.Persistence
 {
@@ -30,6 +32,8 @@ namespace EShop.Persistence
 
             services.AddTransient<IOrderReadRepository, OrderReadRepository>();
             services.AddTransient<IOrderWriteRepository, OrderWriteRepository>();
+
+            services.AddTransient<IUnitOfWork,UnitOfWork>();
 
         }
     }

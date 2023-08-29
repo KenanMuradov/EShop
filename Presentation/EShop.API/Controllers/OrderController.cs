@@ -1,14 +1,9 @@
-﻿using EShop.Application.Features.Commands.Products.AddProduct;
-using EShop.Application.Features.Commands.Products.DeleteProduct;
-using EShop.Application.Features.Commands.Products.UpdateProduct;
-using EShop.Application.Features.Queries.Products.GetAllProducts;
-using EShop.Application.Features.Queries.Products.GetProductById;
-using EShop.Application.Paginations;
-using EShop.Application.Repositories.ProductRepository;
-using EShop.Application.ViewModels;
-using EShop.Domain.Entities;
+﻿using EShop.Application.Features.Commands.Orders.AddOrder;
+using EShop.Application.Features.Commands.Orders.DeleteOrder;
+using EShop.Application.Features.Commands.Orders.UpdateOrder;
+using EShop.Application.Features.Queries.Orders.GetOrderById;
+using EShop.Application.Features.Queries.Orders.GetOrders;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -16,17 +11,17 @@ namespace EShop.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class OrderController : Controller
     {
         private readonly IMediator mediator;
 
-        public ProductsController(IMediator mediator)
+        public OrderController(IMediator mediator)
         {
             this.mediator = mediator;
         }
 
         [HttpGet("getall")]
-        public async Task<IActionResult> GetAll([FromQuery] GetProductsQueryRequest request)
+        public async Task<IActionResult> GetAll([FromQuery] GetOrdersQueryRequest request)
         {
             try
             {
@@ -41,7 +36,7 @@ namespace EShop.API.Controllers
         }
 
         [HttpGet("getbyid")]
-        public async Task<IActionResult> GetById([FromQuery] GetProductByIdQueryRequest request)
+        public async Task<IActionResult> GetById([FromQuery] GetOrderByIdQueryRequest request)
         {
             try
             {
@@ -56,7 +51,7 @@ namespace EShop.API.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> AddProduct([FromBody] AddProductCommandRequest request)
+        public async Task<IActionResult> AddProduct([FromBody] AddOrderCommandRequest request)
         {
             try
             {
@@ -75,7 +70,7 @@ namespace EShop.API.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> UpdateProduct([FromQuery] UpdateProductCommandRequest request)
+        public async Task<IActionResult> UpdateProduct([FromQuery] UpdateOrderCommandRequest request)
         {
             try
             {
@@ -90,7 +85,7 @@ namespace EShop.API.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<IActionResult> DeleteProduct([FromQuery] DeleteProductCommandRequest request)
+        public async Task<IActionResult> DeleteProduct([FromQuery] DeleteOrderCommandRequest request)
         {
             try
             {
@@ -103,5 +98,6 @@ namespace EShop.API.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
+
     }
 }
